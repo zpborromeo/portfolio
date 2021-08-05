@@ -1,0 +1,16 @@
+default:
+  bd_api:
+    api_id: '1959Sowell_Api'
+    api_secret: '/PsEKEu+CzbRatL6Qd4mCmY5ySa8QBhkC2OkVxfeK6e8ZFUQLlmYBBgOxDNLoqMmi5ST23yrvI/VcvTSFczeBQ=='
+    black_diamond_username: 'BWalden'
+    black_diamond_password: 'Pluto18!'
+    authorization_url: 'https://api.bdreporting.com/issue/oauth2/token'
+    call_url: 'https://api.bdreporting.com'
+  core_db:
+    dbname: 'core'
+    host: 'sowell-coredb-postgresql-do-user-9269326-0.b.db.ondigitalocean.com'
+    user: 'doadmin'
+    password: 'qd8mv16ra4jixrz1'
+    port: 25060
+  salesforce:
+    billing_api_user_id: '0052M000009bLKbQAM'

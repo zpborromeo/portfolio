@@ -1,0 +1,26 @@
+default:
+  addepar_api:
+    api_id: '6ae9aefa-60d2-47b7-8a39-8622020845c4'
+    api_secret: 'W9V7hi75XAaaFW1PuPfRaGtxAYO9dZoq7joFNSvK'
+    call_url: 'https://sowell.addepar.com/api'
+  bd_api:
+    api_id: '1959Sowell_Api'
+    api_secret: '/PsEKEu+CzbRatL6Qd4mCmY5ySa8QBhkC2OkVxfeK6e8ZFUQLlmYBBgOxDNLoqMmi5ST23yrvI/VcvTSFczeBQ=='
+    black_diamond_username: 'BWalden'
+    black_diamond_password: 'Pluto18!'
+    authorization_url: 'https://api.bdreporting.com/issue/oauth2/token'
+    call_url: 'https://api.bdreporting.com'
+  core_db:
+    dbname: 'core'
+    host: 'sowell-coredb-postgresql-do-user-9269326-0.b.db.ondigitalocean.com'
+    user: 'doadmin'
+    password: 'qd8mv16ra4jixrz1'
+    port: 25060
+  bd_db:
+    dbname: 'black_diamond'
+    host: 'sowell-coredb-postgresql-do-user-9269326-0.b.db.ondigitalocean.com'
+    user: 'doadmin'
+    password: 'qd8mv16ra4jixrz1'
+    port: 25060
+  salesforce:
+    billing_api_user_id: '0052M000009bLKbQAM'

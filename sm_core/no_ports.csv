@@ -1,0 +1,70 @@
+bd_account_id,account_number,custodial_account_name,account_registration_type,custodian,rep_code_name,team_id,last_name,first_name,portfolio_name,display_name,match_portfolio,bd_portfolio_id
+z0525234861,944741789,rebecca wells,IRA,TD Ameritrade,AKLO,z052884,wells,rebecca,"wells, rebecca",Rebecca Wells Ira,NA,NA
+z0525247611,945745047,mark chen,IRA,TD Ameritrade,BI9A,z052884,chen,mark,"chen, mark",Mark Chen Ira,NA,NA
+z0525262121,945384878,barbara timeus,ROTH IRA,TD Ameritrade,AKLO,z052884,timeus,barbara,"timeus, barbara",Barbara Timeus Roth Ira,NA,NA
+z0525247631,949248921,blase barbera,SIMPLE IRA,TD Ameritrade,A3MY,z052938,barbera,blase,"barbera, blase",Blase Barbera Simple Ira,"barbera, blase",z058031781
+z0525262131,949246038,sullivan freer,ROTH IRA,TD Ameritrade,A3MY,z052938,freer,sullivan,"freer, sullivan",Sullivan Freer Roth Ira,NA,NA
+z0525242541,949247324,matthew leckron,JOINT TENANTS WROS,TD Ameritrade,A3MX,z052948,leckron,matthew,"leckron, matthew",Matthew Leckron Joint Tenants Wros,NA,NA
+z0525247621,949248691,mary scarpelli,INDIVIDUAL,TD Ameritrade,A3MX,z052948,scarpelli,mary,"scarpelli, mary",Mary Scarpelli Individual,"scarpelli, mary",z057936481
+z0525266051,98264375,john colburn,Individual,Schwab,8143313,z053030,colburn,john,"colburn, john",John Colburn Individual,NA,NA
+z0525266031,37269546,robert steven anderson,Individual,Schwab,8154280,z053051,anderson,robert,"anderson, robert",Robert Anderson Individual,NA,NA
+z0525242331,25396953,lila l chambers,Rollover IRA,Schwab,8415813,z053057,chambers,lila,"chambers, lila",Lila Chambers Rollover Ira,NA,NA
+z0525242361,54738528,lila l chambers,Designated Beneficiary IN,Schwab,8415813,z053057,chambers,lila,"chambers, lila",Lila Chambers Designated Beneficiary In,NA,NA
+z0525247461,88977559,loy c fitts,Individual,Schwab,8396139,z053057,fitts,loy,"fitts, loy",Loy Fitts Individual,NA,NA
+z0525254401,34687504,adam scott tanksley,Rollover IRA,Schwab,8415813,z053057,tanksley,adam,"tanksley, adam",Adam Tanksley Rollover Ira,NA,NA
+z0525254421,92663866,loy c fitts,Rollover IRA,Schwab,8439114,z053057,fitts,loy,"fitts, loy",Loy Fitts Rollover Ira,NA,NA
+z0525260291,25341268,lila l chambers inh ira,Inherited IRA from IRA,Schwab,8415813,z053057,ira,lila,"ira, lila",Lila Ira Inherited Ira From Ira,NA,NA
+z0525260301,30029285,b dye j dye ttee,Living Trust,Schwab,8415813,z053057,ttee,b,"ttee, b",B Ttee Living Trust,NA,NA
+z0525266021,29775530,jo ann morrison,Designated Beneficiary IN,Schwab,8415813,z053057,morrison,jo,"morrison, jo",Jo Morrison Designated Beneficiary In,NA,NA
+z0525254411,40540188,janet l. hamilton ttee,Living Trust,Schwab,8217219,z053066,ttee,janet,"ttee, janet",Janet Ttee Living Trust,NA,NA
+z0525265991,13451341,janet l. hamilton,Individual,Schwab,8217219,z053066,hamilton,janet,"hamilton, janet",Janet Hamilton Individual,NA,NA
+z0525266001,21565923,leslie a young,Roth Contributory IRA,Schwab,8217219,z053066,young,leslie,"young, leslie",Leslie Young Roth Contributory Ira,"young, leslie",z057091631
+z0525266011,22197699,janet hamilton lee,Rollover IRA,Schwab,8217219,z053066,lee,janet,"lee, janet",Janet Lee Rollover Ira,NA,NA
+z0525266041,66444440,janet hamilton lee,Roth Contributory IRA,Schwab,8217219,z053066,lee,janet,"lee, janet",Janet Lee Roth Contributory Ira,NA,NA
+z0525242531,945783002,rob kennedy,SEP IRA,TD Ameritrade,A457,z053090,kennedy,rob,"kennedy, rob",Rob Kennedy Sep Ira,"kennedy, rob",z058568131
+z0525234871,949246326,duane crowley,JOINT TENANTS WROS,TD Ameritrade,A582,z053115,crowley,duane,"crowley, duane",Duane Crowley Joint Tenants Wros,NA,NA
+z0525242551,949246305,kathryn crowley,ROTH IRA,TD Ameritrade,A582,z053115,crowley,kathryn,"crowley, kathryn",Kathryn Crowley Roth Ira,NA,NA
+z0525242561,949248325,garrett hall,JOINT TENANTS WROS,TD Ameritrade,A582,z053115,hall,garrett,"hall, garrett",Garrett Hall Joint Tenants Wros,NA,NA
+z0525247641,949248798,timothy nation,ROLLOVER IRA,TD Ameritrade,A582,z053115,nation,timothy,"nation, timothy",Timothy Nation Rollover Ira,NA,NA
+z0525262151,949249908,timothy nation,ROTH IRA,TD Ameritrade,A582,z053115,nation,timothy,"nation, timothy",Timothy Nation Roth Ira,NA,NA
+z0525240991,636162276,david buchinger,Transfer on Death - Individual,Fidelity IWS,G23997166,z053234,buchinger,david,"buchinger, david",David Buchinger Transfer On Death - Individual,NA,NA
+z0525251981,628404933,susan marie mosier-la clair,IRA - BDA,Fidelity IWS,G23997166,z053234,clair,susan,"clair, susan",Susan Clair Ira - Bda,NA,NA
+z0525259511,636167416,carol reif,Transfer on Death - Individual,Fidelity IWS,G23997166,z053234,reif,carol,"reif, carol",Carol Reif Transfer On Death - Individual,NA,NA
+z0525234911,945774453,brian ellis,JOINT TENANTS WROS,TD Ameritrade,BA8Z,z053286,ellis,brian,"ellis, brian",Brian Ellis Joint Tenants Wros,NA,NA
+z0525201351,628393155,shirley breedlove,IRA - BDA,Fidelity IWS,G25989682,z053352,breedlove,shirley,"breedlove, shirley",Shirley Breedlove Ira - Bda,NA,NA
+z0525201371,628393369,gloria macias,IRA,Fidelity IWS,G25989682,z053352,macias,gloria,"macias, gloria",Gloria Macias Ira,NA,NA
+z0525201381,628393384,gloria macias,IRA,Fidelity IWS,G25989682,z053352,macias,gloria,"macias, gloria",Gloria Macias Ira,NA,NA
+z0525201481,656470967,shirley breedlove,Roth IRA,Fidelity IWS,G25989682,z053352,breedlove,shirley,"breedlove, shirley",Shirley Breedlove Roth Ira,NA,NA
+z0525246191,636160279,molly brewer,Roth IRA,Fidelity IWS,G25989683,z053352,brewer,molly,"brewer, molly",Molly Brewer Roth Ira,NA,NA
+z0525242571,949248764,tina huynh,IRA,TD Ameritrade,BFZ0,z053417,huynh,tina,"huynh, tina",Tina Huynh Ira,"huynh, tina",z058624471
+z0525247671,949248830,thuy nguyen,ROTH IRA,TD Ameritrade,BFZ0,z053417,nguyen,thuy,"nguyen, thuy",Thuy Nguyen Roth Ira,"nguyen, thu",z058080571
+z0525247681,949248836,liem nguyen,ROTH IRA,TD Ameritrade,BFZ0,z053417,nguyen,liem,"nguyen, liem",Liem Nguyen Roth Ira,"nguyen, kim",z058588171
+z0525247691,949249117,kang chi,IRA,TD Ameritrade,BFZ0,z053417,chi,kang,"chi, kang",Kang Chi Ira,NA,NA
+z0525247701,949249133,kang chi,ROTH IRA,TD Ameritrade,BFZ0,z053417,chi,kang,"chi, kang",Kang Chi Roth Ira,NA,NA
+z0525269661,949249271,mung dinh,IRA,TD Ameritrade,BFZ0,z053417,dinh,mung,"dinh, mung",Mung Dinh Ira,NA,NA
+z0525201421,636131189,valerie slusarski,IRA,Fidelity IWS,G27253901,z053581,slusarski,valerie,"slusarski, valerie",Valerie Slusarski Ira,NA,NA
+z0525201441,636146461,yamuna abhayawardhane,Transfer on Death - Individual,Fidelity IWS,G27631378,z053597,abhayawardhane,yamuna,"abhayawardhane, yamuna",Yamuna Abhayawardhane Transfer On Death - Individual,"abhayawardhane, yamuna",z058588091
+z0525232031,636152666,melissa summerhayshansen,IRA - Rollover,Fidelity IWS,G28350477,z053666,summerhayshansen,melissa,"summerhayshansen, melissa",Melissa Summerhayshansen Ira - Rollover,NA,NA
+z0525213631,636148824,pdx-ip,Corporation,Fidelity IWS,G28487216,z053675,pdx-ip,pdx-ip,"pdx-ip, pdx-ip",Pdx-Ip Pdx-Ip Corporation,NA,NA
+z0525232391,638233287,harvey spira,IRA - Simplified Employee Pension Plan,Fidelity IWS,G28487216,z053675,spira,harvey,"spira, harvey",Harvey Spira Ira - Simplified Employee Pension Plan,"spira, harvey",z058615581
+z0525269701,945793685,donna broadaway,INDIVIDUAL,TD Ameritrade,BJFZ,z053758,broadaway,donna,"broadaway, donna",Donna Broadaway Individual,NA,NA
+z0525262161,949247848,karen kelly-hemler,IRA,TD Ameritrade,BGJM,z053759,kelly-hemler,karen,"kelly-hemler, karen",Karen Kelly-Hemler Ira,NA,NA
+z0525269671,949247837,douglas hemler,JOINT TENANTS WROS,TD Ameritrade,BGJM,z053759,hemler,douglas,"hemler, douglas",Douglas Hemler Joint Tenants Wros,NA,NA
+z0525269681,949247838,douglas hemler,SEP IRA,TD Ameritrade,BGJM,z053759,hemler,douglas,"hemler, douglas",Douglas Hemler Sep Ira,NA,NA
+z0525269691,949247852,karen kelly-hemler,TRUST,TD Ameritrade,BGJM,z053759,kelly-hemler,karen,"kelly-hemler, karen",Karen Kelly-Hemler Trust,NA,NA
+z0525134441,636141595,ronald heppler,IRA,Fidelity IWS,G28516677,z05656,heppler,ronald,"heppler, ronald",Ronald Heppler Ira,NA,NA
+z0525252001,628405064,john e finholm estate,IRA - BDA,Fidelity IWS,G19253797,z05656,estate,john,"estate, john",John Estate Ira - Bda,NA,NA
+z0525259531,656354404,owen w hunter,Transfer on Death - Joint WRS,Fidelity IWS,G28516677,z05656,hunter,owen,"hunter, owen",Owen Hunter Transfer On Death - Joint Wrs,NA,NA
+z0525259541,656355720,rita d hunter,IRA,Fidelity IWS,G28516677,z05656,hunter,rita,"hunter, rita",Rita Hunter Ira,NA,NA
+z0525259551,656356628,owen w hunter,IRA,Fidelity IWS,G28516677,z05656,hunter,owen,"hunter, owen",Owen Hunter Ira,NA,NA
+z0525234891,945769607,kathryn williams,INDIVIDUAL,TD Ameritrade,AKO1,z05662,williams,kathryn,"williams, kathryn",Kathryn Williams Individual,"williams, kathryn",z056691561
+z0525247651,945782552,karina goco,INDIVIDUAL,TD Ameritrade,AKO1,z05662,goco,karina,"goco, karina",Karina Goco Individual,NA,NA
+z0525255231,945769310,carter pettibone,INDIVIDUAL,TD Ameritrade,AKO1,z05662,pettibone,carter,"pettibone, carter",Carter Pettibone Individual,NA,NA
+z0525247661,949243183,michael buck,INDIVIDUAL,TD Ameritrade,BEUJ,z05666,buck,michael,"buck, michael",Michael Buck Individual,"buck, michael",z058612741
+z0525234881,945761972,christopher meszler,IRA,TD Ameritrade,AH25,z05692,meszler,christopher,"meszler, christopher",Christopher Meszler Ira,NA,NA
+z0525233501,54020669,jacqueline d hughes,Roth Contributory IRA,Schwab,8320801,z05745,hughes,jacqueline,"hughes, jacqueline",Jacqueline Hughes Roth Contributory Ira,"hughes, jacqueline",z056673431
+z0525242341,28308268,steven e grieb,Rollover IRA,Schwab,8200194,z05746,grieb,steven,"grieb, steven",Steven Grieb Rollover Ira,NA,NA
+z0525242371,89753779,steven e grieb,Roth Contributory IRA,Schwab,8200194,z05746,grieb,steven,"grieb, steven",Steven Grieb Roth Contributory Ira,NA,NA
+z0525247441,19136629,jason michael santa maria,Contributory IRA,Schwab,8067121,z05748,maria,jason,"maria, jason",Jason Maria Contributory Ira,NA,NA
+z0525247451,51909945,jason michael santa maria,Individual,Schwab,8067121,z05748,maria,jason,"maria, jason",Jason Maria Individual,NA,NA
+z0525260281,16229682,timothy p fisher,Contributory IRA,Schwab,8067121,z05748,fisher,timothy,"fisher, timothy",Timothy Fisher Contributory Ira,NA,NA

@@ -93,7 +93,7 @@ if(last_batch$date == batch_date & last_batch$status == 'complete' & salesforce_
           filter(is.na(sf__Error))
         
         current_response <- current_response %>% 
-          mutate(FinServ__FinancialAccountNumber__c, as.character(FinServ__FinancialAccountNumber__c)) %>% 
+          mutate(FinServ__FinancialAccountNumber__c = as.character(FinServ__FinancialAccountNumber__c)) %>% 
           bind_rows(successes)
         
         count <- count + 1

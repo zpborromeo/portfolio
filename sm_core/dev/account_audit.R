@@ -73,6 +73,7 @@ clean_accounts <- bd_accounts %>%
 
 
 bd_accounts_by_team <- clean_accounts %>% 
+  filter(batch_date == as_of_date) %>% 
   select(account_number, teams_by_rep_code, custodian, tags) %>% 
   unnest(teams_by_rep_code, keep_empty = TRUE) %>% 
   select(-c(TeamId, AccountId, RepCodeId)) %>% 

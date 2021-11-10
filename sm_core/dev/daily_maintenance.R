@@ -156,26 +156,26 @@ accounts_without_portfolio <- account_match %>%
                                                       auth_header, body = relationship_body, encode='form'))
 
 
-    portfolio_body <- glue::glue('{
-          "portfolioIds": <<jsonlite::toJSON(portfolio_id)>>
-        }', .open = "<<", .close = ">>")
-
-    portfolio_rep_codes <- unique(.x$rep_code_name)
-
-    portfolio_group <- rep_codes %>%
-      filter(rep_codes_id %in% portfolio_rep_codes) %>%
-      select(financial_advisor_lookup_full_name) %>%
-      distinct() %>%
-      pull(financial_advisor_lookup_full_name)
-
-    portfolio_group_id <- first(portfolio_groups$id[amatch(portfolio_group, portfolio_groups$name, method = c('jw'))])
-
-    if(!is.na(portfolio_group_id)){
-
-      portfolio_group_response <- httr::content(httr::POST(str_c(bd_api$call_url, '/v1/portfoliogroup/', portfolio_group_id, '/portfolio'),
-                                                           auth_header, body = portfolio_body, encode='form'))
-
-    }
+    # portfolio_body <- glue::glue('{
+    #       "portfolioIds": <<jsonlite::toJSON(portfolio_id)>>
+    #     }', .open = "<<", .close = ">>")
+    # 
+    # portfolio_rep_codes <- unique(.x$rep_code_name)
+    # 
+    # portfolio_group <- rep_codes %>%
+    #   filter(rep_codes_id %in% portfolio_rep_codes) %>%
+    #   select(financial_advisor_lookup_full_name) %>%
+    #   distinct() %>%
+    #   pull(financial_advisor_lookup_full_name)
+    # 
+    # portfolio_group_id <- first(portfolio_groups$id[amatch(portfolio_group, portfolio_groups$name, method = c('jw'))])
+    # 
+    # if(!is.na(portfolio_group_id)){
+    # 
+    #   portfolio_group_response <- httr::content(httr::POST(str_c(bd_api$call_url, '/v1/portfoliogroup/', portfolio_group_id, '/portfolio'),
+    #                                                        auth_header, body = portfolio_body, encode='form'))
+    # 
+    # }
     
   })
 

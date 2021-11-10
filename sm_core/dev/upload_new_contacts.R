@@ -7,7 +7,7 @@ contact_type_query <- glue::glue("select Id,
 
 contact_ID <- sf_query(contact_type_query)
 
-contact_upload <- readxl::read_xlsx("contact_auto_gen.xlsx")
+contact_upload <- readxl::read_xlsx("Excel_Files/contact_auto_gen.xlsx")
 
 response <- sf_create(contact_upload, api_type = "REST", object_name = "Contact")
 

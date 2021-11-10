@@ -57,8 +57,7 @@ get_accounts_with_no_fee_schedule <- function(bd_accounts, firms_to_remove){
 submit_black_diamond_batch_request <- function(auth_header, call_url, batch_date){
   
   batch_body <- paste0('{ "returnDate": ', "\"", batch_date, "\"", ',
-    "batchFiles": ["Accounts", "Portfolio"],
-    "includeClosedAccounts": "false", "resultCallbackUrl": "http://147.182.162.209:8000/batch_ready"}')
+                        "includeClosedAccounts": "false"}')
   
   batch_url <- str_c(call_url, '/v4/batch')
   

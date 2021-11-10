@@ -135,6 +135,24 @@ accounts_with_portfolio <- account_match %>%
   })
 
 
+rep_codes <- salesforcer::sf_run_report('00O2M0000099eO0UAI') %>% 
+  distinct() %>% 
+  clean_names()
+
+rep_codes_1 <- salesforcer::sf_run_report('00O2M0000099kPnUAI') %>%
+  distinct() %>%
+  clean_names()
+
+rep_codes_new <- rep_codes_1 %>%
+  rename(rep_codes_id = rep_codes_rep_codes_id)
+
+mutated_rep_codes <- merge(rep_codes, rep_codes_new, by = "rep_codes_id")
+
+teams_list <- httr::content(httr::GET(str_c(bd_api$call_url, '/v1/team'), auth_header, body = '', encode='form')) %>%
+  enframe() %>%
+  select(value) %>%
+  unnest_wider(value)
+
 # create portfolio & relationship for accounts without a portfolio match
 accounts_without_portfolio <- account_match %>% 
   filter(is.na(bd_portfolio_id)) %>% 
@@ -166,50 +184,49 @@ accounts_without_portfolio <- account_match %>%
 
     print(bd_team_id)
 
-    # name <- first(.x$portfolio_name)
-    # display_name <- first(.x$portfolio_display_name)
-    # 
-    # portfolio_body <- glue::glue('{
-    #       "name": "<<name>>",
-    #       "displayName": "<<display_name>>",
-    #       "accountIds": <<jsonlite::toJSON(.x$bd_account_id)>>
-    #     }', .open = "<<", .close = ">>")
-    # 
-    # portfolio_response <- httr::content(httr::POST(str_c(bd_api$call_url, '/v1/portfolio/'),
-    #                                                auth_header, body = portfolio_body, encode='form'))
-    # 
-    # portfolio_id <- first(portfolio_response$id)
-    # 
-    # update_port_team <- glue::glue('{
-    #         "name": "<<current$portfolio_name>>",
-    #         "displayName": "<<current$portfolio_display_name>>",
-    #         "teamID": "<<bd_team_id>>"
-    #         }', .open = "<<", .close = ">>")
-    # 
-    # portfolio_response <- httr::content(httr::PUT(str_c(bd_api$call_url, '/v1/portfolio/', portfolio_id),
-    #                                               auth_header, body = update_port_team, encode='form'))
-    # 
-    # relationship_body <- glue::glue('{
-    #       "name": "<<name>>",
-    #       "displayName": "<<display_name>>",
-    #       "createMasterPortfolio": true,
-    #       "masterPortfolioID": "<<portfolio_id>>",
-    #       "masterPortfolioName": "<<display_name>>",
-    #     }', .open = "<<", .close = ">>")
-    # 
-    # relationship_response <- httr::content(httr::POST(str_c(bd_api$call_url, '/v1/relationship/'),
-    #                                                   auth_header, body = relationship_body, encode='form'))
-    # 
+    name <- first(.x$portfolio_name)
+    display_name <- first(.x$portfolio_display_name)
+
+    portfolio_body <- glue::glue('{
+          "name": "<<name>>",
+          "displayName": "<<display_name>>",
+          "accountIds": <<jsonlite::toJSON(.x$bd_account_id)>>
+        }', .open = "<<", .close = ">>")
+
+    portfolio_response <- httr::content(httr::POST(str_c(bd_api$call_url, '/v1/portfolio/'),
+                                                   auth_header, body = portfolio_body, encode='form'))
+
+    portfolio_id <- first(portfolio_response$id)
+
+    update_port_team <- glue::glue('{
+            "name": "<<current$portfolio_name>>",
+            "displayName": "<<current$portfolio_display_name>>",
+            "teamID": "<<bd_team_id>>"
+            }', .open = "<<", .close = ">>")
+
+    portfolio_response <- httr::content(httr::PUT(str_c(bd_api$call_url, '/v1/portfolio/', portfolio_id),
+                                                  auth_header, body = update_port_team, encode='form'))
+
+    relationship_body <- glue::glue('{
+          "name": "<<name>>",
+          "displayName": "<<display_name>>",
+          "createMasterPortfolio": true,
+          "masterPortfolioID": "<<portfolio_id>>",
+          "masterPortfolioName": "<<display_name>>",
+        }', .open = "<<", .close = ">>")
+
+    relationship_response <- httr::content(httr::POST(str_c(bd_api$call_url, '/v1/relationship/'),
+                                                      auth_header, body = relationship_body, encode='form'))
+
     # update_cr_team <- glue::glue('{
     #       "name": "<<name>>",
-    #       "teamIDs": [
-    #         "<<bd_team_id>>"
-    #       ]
+    #       "teamIDs": "<<bd_team_id>>",
     #     }', .open = "<<", .close = ">>")
     # 
     # relationship_response <- httr::content(httr::PUT(str_c(bd_api$call_url, '/v1/relationship/'),
-    #                                                   auth_header, body = update_cr_team, encode='form')
+    #                                                   auth_header, body = update_cr_team, encode='form'))
     
 })
+
 
 

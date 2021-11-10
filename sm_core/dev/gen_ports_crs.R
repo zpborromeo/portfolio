@@ -50,7 +50,6 @@ bd_response <- ports_named %>%
     distinct() %>% 
     pull(id)
   
-  # Wells, Rebecca
   portfolio_body <- glue::glue('{
             "name": "<<current$portfolio_name>>",
             "displayName": "<<current$portfolio_display_name>>",
@@ -81,27 +80,27 @@ bd_response <- ports_named %>%
     relationship_response <- httr::content(httr::POST(str_c(bd_api$call_url, '/v1/relationship/'),
                           auth_header, body = relationship_body, encode='form'))
 
-    portfolio_group1 <- mutated_rep_codes %>%
-      filter(rep_codes_id %in% cur_rep_code) %>%
-      select(financial_advisor_lookup_full_name) %>%
-      distinct() %>%
-      pull(financial_advisor_lookup_full_name)
-    
-    portfolio_group2 <-  mutated_rep_codes %>%
-      filter(rep_codes_id %in% cur_rep_code) %>%
-      select(financial_advisor_firm_lookup_account_name) %>%
-      distinct() %>%
-      pull(financial_advisor_firm_lookup_account_name)
-    
-    portfolio_group_id1 <- first(portfolio_groups$id[amatch(portfolio_group1, portfolio_groups$name, method = c('jw'))])
-    portfolio_group_id2 <- first(portfolio_groups$id[amatch(portfolio_group2, portfolio_groups$name, method = c('jw'))])
-    
-    if (!is.na(portfolio_group_id1)){
-      portfolio_group_response <- httr::content(httr::PUT(str_c(bd_api$call_url, '/v1/portfoliogroup/', portfolio_group_id1, '/portfolio/', portfolio_id),
-                                                           auth_header, body = '', encode='form'))
-    }else if (!is.na(portfolio_group_id2)){
-      portfolio_group_response <- httr::content(httr::PUT(str_c(bd_api$call_url, '/v1/portfoliogroup/', portfolio_group_id2, '/portfolio/', portfolio_id),
-                                                          auth_header, body = '', encode='form'))
-    }
+    # portfolio_group1 <- mutated_rep_codes %>%
+    #   filter(rep_codes_id %in% cur_rep_code) %>%
+    #   select(financial_advisor_lookup_full_name) %>%
+    #   distinct() %>%
+    #   pull(financial_advisor_lookup_full_name)
+    # 
+    # portfolio_group2 <-  mutated_rep_codes %>%
+    #   filter(rep_codes_id %in% cur_rep_code) %>%
+    #   select(financial_advisor_firm_lookup_account_name) %>%
+    #   distinct() %>%
+    #   pull(financial_advisor_firm_lookup_account_name)
+    # 
+    # portfolio_group_id1 <- first(portfolio_groups$id[amatch(portfolio_group1, portfolio_groups$name, method = c('jw'))])
+    # portfolio_group_id2 <- first(portfolio_groups$id[amatch(portfolio_group2, portfolio_groups$name, method = c('jw'))])
+    # 
+    # if (!is.na(portfolio_group_id1)){
+    #   portfolio_group_response <- httr::content(httr::PUT(str_c(bd_api$call_url, '/v1/portfoliogroup/', portfolio_group_id1, '/portfolio/', portfolio_id),
+    #                                                        auth_header, body = '', encode='form'))
+    # }else if (!is.na(portfolio_group_id2)){
+    #   portfolio_group_response <- httr::content(httr::PUT(str_c(bd_api$call_url, '/v1/portfoliogroup/', portfolio_group_id2, '/portfolio/', portfolio_id),
+    #                                                       auth_header, body = '', encode='form'))
+    # }
   
   })

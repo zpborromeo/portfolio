@@ -11,7 +11,7 @@ last_batch <- readr::read_csv('data/last_batch.csv') %>%
 
 if(last_batch$date == batch_date & last_batch$status == 'processing'){
   
-  binary_zip <- get_batch_data(call_url, auth_header, last_batch$id)
+  binary_zip <- get_batch_data(call_url, auth_header, last_batch$id) #replace last_batch$id with id from api if needed
   
   if(length(binary_zip) > 0){
     

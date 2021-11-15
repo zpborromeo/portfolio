@@ -11,7 +11,8 @@ bd_portfolios <- load_black_diamond_portfolios(batch_date)
 unassigned_accounts <- load_black_diamond_unassigned_accounts(batch_date)
 
 words_to_remove <- c('llc', 'revocable', 'trust', 'cust',
-                     'for', 'rev', 'co', 'tt', 'sr', 'jr', 'and')
+                     'for', 'rev', 'co', 'tt', 'sr', 'jr', 'and', 'estate',
+                     'ttee', 'ira', 'inh', 'char', 'rem', 'unitrust')
 
 portfolio_groups <- httr::content(httr::GET(str_c(bd_api$call_url, '/v1/portfoliogroup'), auth_header, body = '', encode='form')) %>% 
   enframe() %>% 
@@ -59,7 +60,7 @@ accounts <- bd_accounts %>%
   mutate(last_name = last(first(str_split(custodial_account_name, ' '))),
          first_name = first(first(str_split(custodial_account_name, ' '))),
          portfolio_name = str_c(last_name, ", ", first_name),
-         display_name = if_else(!is.na(account_registration_type), str_to_title(str_c(first_name, last_name, account_registration_type, sep = ' ')), 
+         display_name = if_else(!is.na(account_registration_type), str_c(str_to_title(first_name), str_to_title(last_name), account_registration_type, sep = ' '), 
                  str_to_title(str_c(first_name, last_name, sep = ' ')))) %>% 
   filter(!is.na(team_id))
 

@@ -3,34 +3,107 @@ source('utils.R')
 sna_cases_report <- salesforcer::sf_run_report('00O2M0000099yoJUAQ') %>% 
   clean_names()
 
+current_date <- get_latest_settlement_date(lubridate::today())
+
 cases_list <- sna_cases_report %>% 
   rename('account_number' = account_number_from_custodian)
 
-new_accounts_list <- readxl::read_excel("C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/New_Accounts_List.xlsx") %>% 
+new_accounts_list_fid <- readxl::read_excel("C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/New_Accounts_List-Fid.xlsx") %>% 
   clean_names()
 
-# may need to include different files reads for Fidelity, TDA, and Schwab
+new_accounts_list_schwab <- readxl::read_excel("C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/New_Accounts_List-Schwab.xlsx") %>% 
+  clean_names()
 
-clean_accounts_list <- new_accounts_list %>% 
+new_accounts_list_td <- readxl::read_excel("C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/New_Accounts_List-TD.xlsx") %>% 
+  clean_names()
+
+#clean acocunts list per custodian
+
+clean_accounts_list_fid <- new_accounts_list_fid %>% 
   mutate(account_number = str_remove(account_number, coll('-')))
 
-account_case_merge <- clean_accounts_list %>% 
+clean_accounts_list_schwab <- new_accounts_list_schwab %>% 
+  rename('account_number' = account) %>% 
+  mutate(account_number = str_remove(account_number, coll('-')))
+
+clean_accounts_list_td <- new_accounts_list_td %>%
+  rename('td_status' = status) %>% 
+  mutate(open_date = lubridate::ymd(open_date)) %>% 
+  filter(open_date == current_date) %>% 
+  mutate(account_number = str_remove(account_number, coll('-')))
+
+#account merge on Fidelity list
+
+account_case_merge_fid <- clean_accounts_list_fid %>% 
   left_join(cases_list, by = c('account_number'))
 
-accounts_without_cases <- account_case_merge %>% 
+accounts_without_cases_fid <- account_case_merge %>% 
   filter(is.na(case_id))
 
-accounts_with_cases <- account_case_merge %>% 
+accounts_with_cases_fid <- account_case_merge_fid %>% 
   filter(!is.na(case_id)) %>% 
-  select(account_number, case_id, status) %>% 
-  mutate(status = "Account Opened")
+  select(case_id, status) %>% 
+  mutate(status = "Account Opened")%>% 
+  rename('Id' = case_id)
 
-response <- accounts_with_cases %>% 
-  split(f = rep(1:ceiling(nrow(accounts_with_cases) / 10), each = 10)[1:nrow(accounts_with_cases)]) %>% 
+#account merge on Schwab list
+
+account_case_merge_schwab <- clean_accounts_list_schwab %>% 
+  left_join(cases_list, by = c('account_number'))
+
+accounts_without_cases_schwab <- account_case_merge_schwab %>% 
+  filter(is.na(case_id))
+
+accounts_with_cases_schwab <- account_case_merge_schwab %>% 
+  filter(!is.na(case_id)) %>% 
+  select(case_id, status) %>% 
+  mutate(status = "Account Opened")%>% 
+  rename('Id' = case_id)
+
+#account merge on TDA list
+
+account_case_merge_td <- clean_accounts_list_td %>% 
+  left_join(cases_list, by = c('account_number'))
+
+accounts_without_cases_td <- account_case_merge_td %>% 
+  filter(is.na(case_id))
+
+accounts_with_cases_td <- account_case_merge_td %>% 
+  filter(!is.na(case_id)) %>% 
+  select(case_id, status) %>% 
+  mutate(status = "Account Opened") %>% 
+  rename('Id' = case_id)
+
+#responses for case searches
+
+response <- accounts_with_cases_fid %>% 
+  split(f = rep(1:ceiling(nrow(accounts_with_cases_fid) / 10), each = 10)[1:nrow(accounts_with_cases_fid)]) %>% 
   map_dfr(~{
     
     sf_update(.x, object_name = "Case")
     
   })
 
-save_document <- write.xlsx(accounts_without_cases, "C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/accounts_without_cases.xlsx", overwrite = TRUE)
+save_document <- write.xlsx(accounts_without_cases_fid, "C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/accounts_without_cases_fid.xlsx", overwrite = TRUE)
+
+
+response <- accounts_with_cases_schwab %>% 
+  split(f = rep(1:ceiling(nrow(accounts_with_cases_schwab) / 10), each = 10)[1:nrow(accounts_with_cases_schwab)]) %>% 
+  map_dfr(~{
+    
+    sf_update(.x, object_name = "Case")
+    
+  })
+
+save_document <- write.xlsx(accounts_without_cases_schwab, "C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/accounts_without_cases_schwab.xlsx", overwrite = TRUE)
+
+response <- accounts_with_cases_td %>% 
+  split(f = rep(1:ceiling(nrow(accounts_with_cases_td) / 10), each = 10)[1:nrow(accounts_with_cases_td)]) %>% 
+  map_dfr(~{
+    
+    sf_update(.x, object_name = "Case")
+    
+  })
+
+save_document <- write.xlsx(accounts_without_cases_td, "C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/accounts_without_cases_td.xlsx", overwrite = TRUE)
+

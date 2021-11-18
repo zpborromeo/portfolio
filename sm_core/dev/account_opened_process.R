@@ -8,13 +8,13 @@ current_date <- get_latest_settlement_date(lubridate::today())
 cases_list <- sna_cases_report %>% 
   rename('account_number' = account_number_from_custodian)
 
-new_accounts_list_fid <- readxl::read_excel("C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/New_Accounts_List-Fid.xlsx") %>% 
+new_accounts_list_fid <- readxl::read_excel("New_Accounts_List/New_Accounts_List-Fid.xlsx") %>% 
   clean_names()
 
-new_accounts_list_schwab <- readxl::read_excel("C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/New_Accounts_List-Schwab.xlsx") %>% 
+new_accounts_list_schwab <- readxl::read_excel("New_Accounts_List/New_Accounts_List-Schwab.xlsx") %>% 
   clean_names()
 
-new_accounts_list_td <- readxl::read_excel("C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/New_Accounts_List-TD.xlsx") %>% 
+new_accounts_list_td <- readxl::read_excel("New_Accounts_List/New_Accounts_List-TD.xlsx") %>% 
   clean_names()
 
 #clean acocunts list per custodian
@@ -84,7 +84,7 @@ response <- accounts_with_cases_fid %>%
     
   })
 
-save_document <- write.xlsx(accounts_without_cases_fid, "C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/accounts_without_cases_fid.xlsx", overwrite = TRUE)
+save_document <- write.csv(accounts_without_cases_fid, "New_Accounts_List/accounts_without_cases_fid.csv")
 
 
 response <- accounts_with_cases_schwab %>% 
@@ -95,7 +95,7 @@ response <- accounts_with_cases_schwab %>%
     
   })
 
-save_document <- write.xlsx(accounts_without_cases_schwab, "C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/accounts_without_cases_schwab.xlsx", overwrite = TRUE)
+save_document <- write.csv(accounts_without_cases_schwab, "New_Accounts_List/accounts_without_cases_schwab.csv")
 
 response <- accounts_with_cases_td %>% 
   split(f = rep(1:ceiling(nrow(accounts_with_cases_td) / 10), each = 10)[1:nrow(accounts_with_cases_td)]) %>% 
@@ -105,5 +105,5 @@ response <- accounts_with_cases_td %>%
     
   })
 
-save_document <- write.xlsx(accounts_without_cases_td, "C:/Users/Zach/OneDrive - Sowell Management/New_Accounts_List/accounts_without_cases_td.xlsx", overwrite = TRUE)
+save_document <- write.csv(accounts_without_cases_td, "New_Accounts_List/accounts_without_cases_td.csv")
 

@@ -15,7 +15,7 @@ eba_new_account_cases <- sf_query("select Id,
                            Account_Number_from_Custodian__c,
                            RecordType.Name
                     from Case
-                    where OwnerId=''")
+                    where OwnerId='0052M000008sO57QAE'")
 
 
 # where (RecordType.Name like '%EBA - Submit New Account%' 

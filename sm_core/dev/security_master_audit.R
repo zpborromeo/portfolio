@@ -2,7 +2,8 @@ source('utils.R')
 
 addepar_sm <- readxl::read_excel("Excel_Files/addepar-sm.xlsx") %>% 
   clean_names() %>% 
-  rename("sm_sec_asset_type" = sec_asset_type)
+  rename("sm_sec_asset_type" = sec_asset_type) %>% 
+  rename("ticker" = ticker_symbol)
 
 black_diamond_sm <- readxl::read_excel("Excel_Files/black-diamond-sm.xlsx") %>% 
   clean_names()
@@ -48,6 +49,7 @@ ticker_upload_table <- ticker_match %>%
   select(ticker, entity_id, security, sm_class, sm_segment, sm_sector_segment, sm_issue_type, sm_sec_asset_type, issue_type,
          class, segment, dual_segment, sec_asset_type, class_match, segment_match, sector_segment_match, issue_type_match, 
          sec_asset_type_match, full_match) %>% 
+  filter(full_match == "Mismatched Information") %>% 
   mutate(new_class = if_else(class_match == TRUE, sm_class, class)) %>% 
   mutate(new_class = if_else(is.na(class), sm_class, class)) %>% 
   mutate(new_segment = if_else(segment_match == TRUE, sm_segment, segment)) %>%
@@ -63,7 +65,8 @@ ticker_upload_table <- ticker_match %>%
 cusip_upload_table <- cusip_match %>% 
   select(cusip, entity_id, security, sm_class, sm_segment, sm_sector_segment, sm_issue_type, sm_sec_asset_type, issue_type,
          class, segment, dual_segment, sec_asset_type, class_match, segment_match, sector_segment_match, issue_type_match, 
-         sec_asset_type_match, full_match) %>% 
+         sec_asset_type_match, full_match) %>%
+  filter(full_match == "Mismatched Information") %>% 
   mutate(new_class = if_else(class_match == TRUE, sm_class, class)) %>% 
   mutate(new_class = if_else(is.na(class), sm_class, class)) %>% 
   mutate(new_segment = if_else(segment_match == TRUE, sm_segment, segment)) %>%

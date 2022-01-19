@@ -25,3 +25,7 @@ unmatched_styles <- account_merge %>%
 
 na_styles <- account_merge %>% 
   filter(is.na(style_match))
+
+save_document <- write.csv(matched_styes, "C:/sm-core/sm_core/Excel_Files/matched_styles.csv")
+save_document <- write.csv(unmatched_styles, "C:/sm-core/sm_core/Excel_Files/unmatched_styles.csv")
+save_document <- write.csv(na_styles, "C:/sm-core/sm_core/Excel_Files/na_styles.csv")

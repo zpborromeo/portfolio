@@ -1,15 +1,18 @@
 source('utils.R')
 
 
-create_households <- readxl::read_excel("Excel_Files/create_sf_households.xlsx")
+# create_households <- readxl::read_excel("Excel_Files/create_sf_households.xlsx")
+
+update_households <- readxl::read_excel("Excel_Files/update_sf_households.xlsx")
 
 # delete_households <- readxl::read_excel("Excel_Files/delete_sf_households.xlsx") 
 
-response_households <- create_households %>%
-  split(f = rep(1:ceiling(nrow(create_households) / 10), each = 10)[1:nrow(create_households)]) %>%
+response_households <- update_households %>%
+  split(f = rep(1:ceiling(nrow(update_households) / 10), each = 10)[1:nrow(update_households)]) %>%
   map_dfr(~{
 
-    sf_create(.x, object_name = "Account")
+    # sf_create(.x, object_name = "Account")
+    sf_update(.x, object_name = "Account")
     # sf_delete(.x, object_name = "Account")
 
   })
@@ -25,4 +28,4 @@ househould_type_query1 <- sprintf("select Id,
 
 household_ID <- sf_query(househould_type_query1)
 
-write_csv(household_ids.csv")
+write_csv("household_ids.csv")

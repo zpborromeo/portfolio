@@ -1,16 +1,20 @@
 source('utils.R')
 
 addepar_accounts <- readxl::read_excel("Excel_Files/addepar-accts.xlsx") %>% 
-  clean_names()
+  clean_names() %>% 
+  mutate(account_number = as.numeric(account_number)) %>% 
+  rename("holding_account_number" = account_number)
 
 sf_sandbox_accounts <- readxl::read_excel("Excel_Files/sandbox-accounts.xlsx") %>% 
   clean_names() %>% 
   rename("financial_account_name_sandbox" = financial_account_financial_account_name) %>% 
+  mutate(account_number = as.numeric(account_number)) %>% 
   rename("holding_account_number" = account_number)
 
 sf_production_accounts <- readxl::read_excel("Excel_Files/production-accounts.xlsx") %>% 
   clean_names()%>% 
   rename("financial_account_name_production" = financial_account_financial_account_name) %>% 
+  mutate(account_number = as.numeric(account_number)) %>% 
   rename("holding_account_number" = account_number)
 
 production_addepar_join <- sf_production_accounts %>% 

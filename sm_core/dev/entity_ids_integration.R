@@ -33,3 +33,16 @@ sandbox_addepar_join <- sf_sandbox_accounts %>%
 
 save_document <- write.csv(production_addepar_join, "Excel_Files/production_addepar_join.csv")
 save_document <- write.csv(sandbox_addepar_join, "Excel_Files/sandbox_addepar_join.csv")
+
+production_accounts_entityIDs <- production_addepar_join %>% 
+  select(Id, entity_id) %>% 
+  rename("Addepar_Entity_ID__c" = entity_id)
+
+
+response <- production_accounts_entityIDs %>% 
+  split(f = rep(1:ceiling(nrow(production_accounts_entityIDs) / 10), each = 10)[1:nrow(production_accounts_entityIDs)]) %>% 
+  map_dfr(~{
+  
+    sf_update(.x, object_name = "FinServ__FinancialAccount__c")
+    
+  })

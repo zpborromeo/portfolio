@@ -1,7 +1,6 @@
 
 source('utils.R')
 
-
 batch_date <- get_latest_settlement_date(lubridate::today())
 
 bd_accounts <- load_black_diamond_accounts(batch_date)
@@ -233,4 +232,10 @@ accounts_without_portfolio <- account_match %>%
 
 })
 
+unnested_awop <- accounts_without_portfolio %>% 
+  enframe() %>% 
+  select(value) %>% 
+  unnest_wider(value)
+
+save_document <- write.csv(unnested_awop, "Excel_Files/accounts_without_portfolio.csv")
 

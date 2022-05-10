@@ -1,7 +1,6 @@
 
 source('utils.R')
 
-
 batch_date <- get_latest_settlement_date(lubridate::today())
 
 bd_accounts <- load_black_diamond_accounts(batch_date)
@@ -12,7 +11,8 @@ unassigned_accounts <- load_black_diamond_unassigned_accounts(batch_date)
 
 words_to_remove <- c('llc', 'revocable', 'trust', 'cust',
                      'for', 'rev', 'co', 'tt', 'sr', 'jr', 'and', 'estate',
-                     'ttee', 'ira', 'inh', 'char', 'rem', 'unitrust')
+                     'ttee', 'ira', 'inh', 'char', 'rem', 'unitrust', 'family',
+                     'the', 'tr', '401K')
 
 portfolio_groups <- httr::content(httr::GET(str_c(bd_api$call_url, '/v1/portfoliogroup'), auth_header, body = '', encode='form')) %>% 
   enframe() %>% 
@@ -188,6 +188,9 @@ accounts_without_portfolio <- account_match %>%
     # name <- first(.x$portfolio_name)
     # display_name <- first(.x$portfolio_display_name)
     # 
+    # print(display_name)
+    # print(cur_rep_code)
+    # 
     # portfolio_body <- glue::glue('{
     #       "name": "<<name>>",
     #       "displayName": "<<display_name>>",
@@ -223,11 +226,16 @@ accounts_without_portfolio <- account_match %>%
     #       "name": "<<name>>",
     #       "teamIDs": "<<bd_team_id>>",
     #     }', .open = "<<", .close = ">>")
-    # 
+    #
     # relationship_response <- httr::content(httr::PUT(str_c(bd_api$call_url, '/v1/relationship/'),
     #                                                   auth_header, body = update_cr_team, encode='form'))
-    
+
 })
 
+unnested_awop <- accounts_without_portfolio %>% 
+  enframe() %>% 
+  select(value) %>% 
+  unnest_wider(value)
 
+save_document <- write.csv(unnested_awop, "Excel_Files/accounts_without_portfolio.csv")
 

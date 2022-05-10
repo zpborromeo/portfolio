@@ -62,7 +62,9 @@ if(last_batch$date == batch_date & last_batch$status == 'complete' & salesforce_
     left_join(sf_financial_accounts, by = c('FinServ__FinancialAccountNumber__c')) %>% 
     filter(!is.na(Id))
   
-  update_responses <- sf_financial_accounts_to_update %>% 
+  update_responses <- sf_financial_accounts_to_update %>%
+    mutate(FinServ__FinancialAccountNumber__c = as.character(FinServ__FinancialAccountNumber__c)) %>% 
+    mutate(FinServ__PostalCode__c = as.character(FinServ__PostalCode__c)) %>% 
     split(f = rep(1:ceiling(nrow(sf_financial_accounts_to_update) / 5000), each = 5000)[1:nrow(sf_financial_accounts_to_update)]) %>% 
     map_dfr(~{
       
@@ -90,10 +92,13 @@ if(last_batch$date == batch_date & last_batch$status == 'complete' & salesforce_
           select(-c(sf__Id, sf__Created, sf__Error))
         
         successes <- reprocess_response %>% 
+          mutate(FinServ__FinancialAccountNumber__c = as.character(FinServ__FinancialAccountNumber__c)) %>% 
+          mutate(FinServ__PostalCode__c = as.character(FinServ__PostalCode__c)) %>%
           filter(is.na(sf__Error))
         
         current_response <- current_response %>% 
           mutate(FinServ__FinancialAccountNumber__c = as.character(FinServ__FinancialAccountNumber__c)) %>% 
+          mutate(FinServ__PostalCode__c = as.character(FinServ__PostalCode__c)) %>%
           bind_rows(successes)
         
         count <- count + 1

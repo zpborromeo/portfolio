@@ -1,2 +1,0 @@
-C:\Users\Andre\source\repos\IntroToGame2\.vs\Debug\IntroToGame.exe
-C:\Users\Andre\source\repos\IntroToGame2\Debug\IntroToGame.exe

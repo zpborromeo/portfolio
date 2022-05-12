@@ -1,0 +1,5 @@
+Link to main repository: https://github.com/zpborromeo/NFL-Mock-Draft
+
+
+IF you are unable to access the repository, use the following link to clone the repository using GitHub Desktop or Command Line
+https://github.com/zpborromeo/NFL-Mock-Draft.git
